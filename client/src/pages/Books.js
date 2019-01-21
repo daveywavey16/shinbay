@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import EditBtn from "../components/EditBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -33,10 +32,6 @@ class Books extends Component {
     API.deleteBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
-  };
-
-  showEditBook = (title, description) => {
-    this.setState({title: title, author: description});
   };
 
   handleInputChange = event => {
@@ -109,7 +104,6 @@ class Books extends Component {
                       </p>
                     {/* </Link> */}
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                    <EditBtn onClick={() => this.showEditBook(book.title, book.author)} />
                   </ListItem>
                 ))}
               </List>
@@ -143,14 +137,15 @@ class Books extends Component {
             )}
 
                 
- 
+<Link to={"/menu"}> 
 <ScreenBtn>
 Screen View
 </ScreenBtn>            
- 
-<Link to={"/menu"}>
+</Link> 
+
+<Link to={"/menuprint"}> 
 <PrintBtn>
-Print
+Print 
 </PrintBtn>
 </Link>
   
@@ -159,7 +154,7 @@ Send Email
 </EmailBtn>
 
 <TwBtn>
-Facebook
+Send SMS
 </TwBtn >
 </Col>
           
